@@ -1,0 +1,84 @@
+/* Center the card on the page */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f9d5d3; /* Background color */
+  }
+  
+  /* Outer card container */
+  .card {
+    width: 60%; /* Card width (60% of viewport width) */
+    max-width: 600px; /* Maximum width for larger screens */
+    height: 50%; /* Card height (50% of viewport height) */
+    perspective: 1000px; /* Enable perspective for flipping effect */
+  }
+  
+  /* Inner card container for flipping effect */
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  /* Flip the card on hover */
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Front and back faces of the card */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back face when not visible */
+    border-radius: 15px; /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Front face styles */
+  .card-front {
+    background-color: #ff6f91; /* Pink front color */
+    color: white; /* Text color */
+  }
+  
+  /* Back face styles */
+  .card-back {
+    background-color: #ff6f91; /* Same pink color for consistency */
+    color: white; /* Text color */
+    transform: rotateY(180deg); /* Flip the back face initially */
+  }
+  
+  /* Text styles for both sides of the card */
+  .card-front h1,
+  .card-back h1 {
+    font-size: 4rem; /* Larger text size for emphasis */
+    font-family: 'Dancing Script', cursive; /* Romantic font style */
+  }
+  
+  /* Add red hearts along the borders */
+  .card-front::before,
+  .card-front::after,
+  .card-back::before,
+  .card-back::after {
+    content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ";
+    position: absolute;
+    font-size: 1.5rem;
+  }
+  
+  .card-front::before,
+  .card-back::before {
+    top: -20px; /* Hearts at the top border */
+  }
+  
+  .card-front::after,
+  .card-back::after {
+    bottom: -20px; /* Hearts at the bottom border */
+  }
+  
